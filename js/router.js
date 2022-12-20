@@ -6,16 +6,14 @@ const route = (event) => {
 };
 
 const routes = {
-    404: "/spa/pages/404.html",
-    "/": "/spa/pages/index.html",
-    "/about": "/spa/pages/about.html",
-    "/lorem": "/spa/pages/lorem.html",
+    404: "/pages/404.html",
+    "/": "/pages/index.html",
+    "/about": "/pages/about.html",
+    "/lorem": "/pages/lorem.html",
 };
 
 const handleLocation = async () => {
-    let path = window.location.pathname;
-    if(path.indexOf("/spa")>=0)
-        path = path.slice(4);
+    const path = window.location.pathname;
     const route = routes[path] || routes[404];
     const html = await fetch(route).then((data) => data.text());
     console.log(html)
